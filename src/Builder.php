@@ -38,6 +38,9 @@ class Builder
         $this->client = $client;
     }
 
+    /**
+     * @return $this
+     */
     public function addQuery(Query $query, string $boolType = 'must'): Builder
     {
         if (! $this->query) {
@@ -49,6 +52,9 @@ class Builder
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function addAggregation(Aggregation $aggregation): Builder
     {
         if (! $this->aggregations) {
@@ -60,6 +66,9 @@ class Builder
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function addSort(Sort $sort): Builder
     {
         if (! $this->sorts) {
@@ -97,6 +106,9 @@ class Builder
         return $this->client->search($params);
     }
 
+    /**
+     * @return $this
+     */
     public function index(string $searchIndex): Builder
     {
         $this->searchIndex = $searchIndex;
@@ -104,6 +116,9 @@ class Builder
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function size(int $size): Builder
     {
         $this->size = $size;
@@ -111,6 +126,9 @@ class Builder
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function from(int $from): Builder
     {
         $this->from = $from;
@@ -118,6 +136,9 @@ class Builder
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function searchAfter(?array $searchAfter): Builder
     {
         $this->searchAfter = $searchAfter;
@@ -125,6 +146,9 @@ class Builder
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function fields(array $fields): Builder
     {
         $this->fields = array_merge($this->fields ?? [], $fields);
@@ -132,6 +156,9 @@ class Builder
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function withoutAggregations(): Builder
     {
         $this->withAggregations = false;

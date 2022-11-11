@@ -13,6 +13,9 @@ abstract class Aggregation
         return $this->name;
     }
 
+    /**
+     * @return $this
+     */
     public function meta(array $meta): Aggregation
     {
         $this->meta = array_merge($this->meta, $meta);

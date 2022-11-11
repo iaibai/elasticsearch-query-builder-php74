@@ -16,6 +16,9 @@ class BoolQuery implements Query
         return new self();
     }
 
+    /**
+     * @return $this
+     */
     public function add(Query $query, string $type = 'must'): BoolQuery
     {
         if (! in_array($type, ['must', 'filter', 'should', 'must_not'])) {

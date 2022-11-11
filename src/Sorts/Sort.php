@@ -26,6 +26,9 @@ class Sort
         $this->order = $order;
     }
 
+    /**
+     * @return $this
+     */
     public function missing(string $missing): Sort
     {
         $this->missing = $missing;
@@ -33,6 +36,9 @@ class Sort
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function unmappedType(string $unmappedType): Sort
     {
         $this->unmappedType = $unmappedType;

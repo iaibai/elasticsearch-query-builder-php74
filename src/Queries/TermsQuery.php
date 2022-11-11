@@ -9,8 +9,6 @@ class TermsQuery implements Query
     protected array $value;
 
     /**
-     * @param string $field
-     * @param array $value
      * @return static
      */
     public static function create(string $field, array $value): TermsQuery
