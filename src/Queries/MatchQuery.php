@@ -4,19 +4,40 @@ namespace Spatie\ElasticsearchQueryBuilder\Queries;
 
 class MatchQuery implements Query
 {
+    protected string $field;
+
+    /**
+     * @var string|int $query
+     */
+    protected $query;
+
+    /**
+     * @var string|int|null $fuzziness
+     */
+    protected $fuzziness = null;
+
+    /**
+     * @param string $field
+     * @param string|int $query
+     * @param string|int|null $fuzziness
+     * @return static
+     */
     public static function create(
         string $field,
-        string | int $query,
-        null | string | int $fuzziness = null
+        $query,
+        $fuzziness = null
     ): self {
         return new self($field, $query, $fuzziness);
     }
 
     public function __construct(
-        protected string $field,
-        protected string | int $query,
-        protected null | string | int $fuzziness = null
+        string $field,
+        $query,
+        $fuzziness = null
     ) {
+        $this->field = $field;
+        $this->query = $query;
+        $this->fuzziness = $fuzziness;
     }
 
     public function toArray(): array

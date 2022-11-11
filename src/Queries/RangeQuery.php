@@ -4,45 +4,66 @@ namespace Spatie\ElasticsearchQueryBuilder\Queries;
 
 class RangeQuery implements Query
 {
-    protected null | int | float | string $gte = null;
+    protected string $field;
 
-    protected null | int | float | string $lt = null;
+    /** @var int|float|string|null $gte */
+    protected $gte = null;
 
-    protected null | int | float | string $lte = null;
+    /** @var int|float|string|null $lt */
+    protected $lt = null;
 
-    protected null | int | float | string $gt = null;
+    /** @var int|float|string|null $lte */
+    protected $lte = null;
+
+    /** @var int|float|string|null $gt */
+    protected $gt = null;
 
     public static function create(string $field): self
     {
         return new self($field);
     }
 
-    public function __construct(protected string $field)
+    public function __construct(string $field)
     {
+        $this->field = $field;
     }
 
-    public function lt(int | float | string $value): self
+    /**
+     * @param int|float|string $value
+     */
+    public function lt($value): self
     {
         $this->lt = $value;
 
         return $this;
     }
 
-    public function lte(int | float | string $value): self
+    /**
+     * @param int|float|string $value
+     */
+    public function lte($value): self
     {
         $this->lte = $value;
 
         return $this;
     }
 
-    public function gt(int | float | string $value): self
+    /**
+     * @param int|float|string $value
+     * @return $this
+     */
+    public function gt($value): self
     {
         $this->gt = $value;
 
         return $this;
     }
 
-    public function gte(int | float | string $value): self
+    /**
+     * @param int|float|string $value
+     * @return $this
+     */
+    public function gte($value): self
     {
         $this->gte = $value;
 
