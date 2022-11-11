@@ -3,6 +3,9 @@
 namespace Spatie\ElasticsearchQueryBuilder;
 
 use Elastic\Elasticsearch\Client;
+use Elastic\Elasticsearch\Response\Elasticsearch;
+use Exception;
+use Http\Promise\Promise;
 use Spatie\ElasticsearchQueryBuilder\Aggregations\Aggregation;
 use Spatie\ElasticsearchQueryBuilder\Queries\BoolQuery;
 use Spatie\ElasticsearchQueryBuilder\Queries\Query;
@@ -88,7 +91,16 @@ class Builder
             $params['from'] = $this->from;
         }
 
-        return $this->client->search($params);
+        $response = $this->client->search($params);
+        if ($response instanceof Promise) {
+            $response = $response->wait();
+        }
+
+        if (!($response instanceof Elasticsearch)) {
+            throw new Exception("Invalid response from Elasticsearch");
+        }
+
+        return $response->asArray();
     }
 
     public function index(string $searchIndex): Builder
