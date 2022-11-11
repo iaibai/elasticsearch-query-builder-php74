@@ -71,7 +71,10 @@ class Builder
         return $this;
     }
 
-    public function search(): array
+    /**
+     * @return Elasticsearch|Promise
+     */
+    public function search()
     {
         $payload = $this->getPayload();
 
@@ -91,16 +94,7 @@ class Builder
             $params['from'] = $this->from;
         }
 
-        $response = $this->client->search($params);
-        if ($response instanceof Promise) {
-            $response = $response->wait();
-        }
-
-        if (!($response instanceof Elasticsearch)) {
-            throw new Exception("Invalid response from Elasticsearch");
-        }
-
-        return $response->asArray();
+        return $this->client->search($params);
     }
 
     public function index(string $searchIndex): Builder
