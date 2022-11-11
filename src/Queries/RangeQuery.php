@@ -6,16 +6,16 @@ class RangeQuery implements Query
 {
     protected string $field;
 
-    /** @var int|float|string|null $gte */
+    /** @var int|float|string|null */
     protected $gte = null;
 
-    /** @var int|float|string|null $lt */
+    /** @var int|float|string|null */
     protected $lt = null;
 
-    /** @var int|float|string|null $lte */
+    /** @var int|float|string|null */
     protected $lte = null;
 
-    /** @var int|float|string|null $gt */
+    /** @var int|float|string|null */
     protected $gt = null;
 
     public static function create(string $field): self

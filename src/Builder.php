@@ -96,7 +96,7 @@ class Builder
             $response = $response->wait();
         }
 
-        if (!($response instanceof Elasticsearch)) {
+        if (! ($response instanceof Elasticsearch)) {
             throw new Exception("Invalid response from Elasticsearch");
         }
 

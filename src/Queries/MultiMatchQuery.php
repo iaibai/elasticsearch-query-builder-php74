@@ -14,7 +14,7 @@ class MultiMatchQuery implements Query
     protected string $query;
     protected array $fields;
     /**
-     * @var int|string|null $fuzziness
+     * @var int|string|null
      */
     protected $fuzziness = null;
     protected ?string $type = null;

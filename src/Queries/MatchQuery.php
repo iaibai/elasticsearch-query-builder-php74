@@ -7,12 +7,12 @@ class MatchQuery implements Query
     protected string $field;
 
     /**
-     * @var string|int $query
+     * @var string|int
      */
     protected $query;
 
     /**
-     * @var string|int|null $fuzziness
+     * @var string|int|null
      */
     protected $fuzziness = null;
 
